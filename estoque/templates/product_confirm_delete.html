@@ -1,0 +1,29 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block 'title' %}
+  Deletar
+{% endblock 'title' %} 
+
+{% block 'head' %}
+  <link rel="stylesheet" href="{% static "deletaProdu/deletaProdu.css" %}">
+{% endblock 'head' %}
+
+{% block 'header' %}
+
+<h1>Tem certeza que deseja deletar o produto "{{ object.name }}"?</h1>
+
+{% endblock 'header' %}
+
+{% block 'body' %}
+
+<div>
+        <form method="post">
+          {% csrf_token %}
+          <button type="submit">Confirmar</button>
+        </form>
+        <a href="{% url 'product-list' %}">Cancelar</a>
+</div>
+
+
+{% endblock 'body' %}

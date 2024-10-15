@@ -1,0 +1,35 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block 'title' %}
+  Listar
+{% endblock 'title' %} 
+
+{% block 'head' %}
+  <link rel="stylesheet" href="">
+{% endblock 'head' %}
+
+{% block 'header' %}
+
+<h1>Lista de Produtos</h1>
+
+{% endblock 'header' %}
+
+{% block 'body' %}
+
+
+  <div>
+    <a href="{% url 'product-create' %}">Adicionar Produto</a>
+    <ul>
+      {% for product in products %}
+      <li>
+        <strong>{{ product.nome }}</strong> - {{ product.quantidade }} unidades -
+        R$ {{ product.preco }}
+        <a href="{% url 'product-edit' product.pk %}">Editar</a> |
+        <a href="{% url 'product-delete' product.pk %}">Deletar</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+{% endblock 'body' %}

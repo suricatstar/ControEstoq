@@ -1,0 +1,28 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block 'title' %}
+  Editar
+{% endblock 'title' %} 
+
+{% block 'head' %}
+  <link rel="stylesheet" href="{% static "productForm/form.css" %}">
+{% endblock 'head' %}
+
+{% block 'header' %}
+
+<h1>{{ view.object.pk|yesno:"Editar Produto,Novo Produto" }}</h1>
+
+{% endblock 'header' %}
+
+{% block 'body' %}
+
+    <div>
+        <form method="post">
+          {% csrf_token %} {{ form.as_p }}
+          <button type="submit">Salvar</button>
+        </form>
+        <a href="{% url 'product-list' %}">Voltar</a>
+    </div>
+
+{% endblock 'body' %}
